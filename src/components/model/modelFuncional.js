@@ -2,7 +2,6 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import TablaModel from "./src/models/tabla3d.gltf"
-import BaseModel from "./src/models/Base.glb"
 
 const modelFuncional= () =>{
 
@@ -80,22 +79,8 @@ const modelFuncional= () =>{
 
 
         let tablaMesh
-        let baseMesh
 
 
-        const gltfLoaderBase = new GLTFLoader()
-        gltfLoaderBase.load(BaseModel,
-            (gltf) =>
-            {
-                baseMesh= gltf.scene
-                baseMesh.scale.set(.7,.7, .7)
-                baseMesh.position.set(0,-1.4, 0)
-
-                scene.add(baseMesh)
-            }
-        )
-
-        
         const gltfLoader = new GLTFLoader()
         gltfLoader.load(TablaModel,
             (gltf) =>
