@@ -87,7 +87,7 @@ const modelFuncional= () =>{
             {
                 tablaMesh= gltf.scene
                 tablaMesh.scale.set(.7,.7, .7)
-                tablaMesh.position.set(0,-1.4, 0)
+                tablaMesh.position.set(0,-1.6, 0)
                 scene.add(tablaMesh)
             }
         )
