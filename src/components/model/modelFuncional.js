@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import TablaModel from "./src/models/Tabla.glb"
+import TablaModel from "./src/models/tabla3d.gltf"
 import BaseModel from "./src/models/Base.glb"
 
 const modelFuncional= () =>{
