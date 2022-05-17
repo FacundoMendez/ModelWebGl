@@ -4,7 +4,6 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import TablaModel from "./src/models/Tabla.glb"
 import BaseModel from "./src/models/Base.glb"
 
-
 const modelFuncional= () =>{
 
         const scene = new THREE.Scene()
@@ -54,22 +53,24 @@ const modelFuncional= () =>{
 
             /* lights */
        
-            const ambientLight = new THREE.AmbientLight(0xff00ff, .4)
+            const ambientLight = new THREE.AmbientLight(0xFFDAAA, 8)
             scene.add(ambientLight)
         
-            const pointLight = new THREE.PointLight(0xffffff,7)
-            pointLight.position.set(4 , 0, 2)
+            const pointLight = new THREE.PointLight(0xFFDAAA,5)
+            pointLight.position.set(0 , 0, 0)
             scene.add(pointLight)
 
-            const pointLight2 = new THREE.PointLight(0xFFDAAA, 10)
-            pointLight2.position.set(-2 , 0, 1)
+            const pointLight2 = new THREE.PointLight(0xFFDAAA, 5)
+            pointLight2.position.set(2 , 1, 0)
             scene.add(pointLight2)
 
-            const pointLight3 = new THREE.PointLight(0xFFDAAA, 10)
-            pointLight3.position.set(0 , 2, 0)
+            const pointLight3 = new THREE.PointLight(0xFFDAAA, 5)
+            pointLight3.position.set(-2 , -1, 0)
             scene.add(pointLight3)
 
-          
+            const directionalLight = new THREE.DirectionalLight(0xFFDAAA, 10)
+            scene.add(directionalLight)
+            directionalLight.position.set(1, -0.25, -30)
 
             /* camera */
             
@@ -78,10 +79,8 @@ const modelFuncional= () =>{
         scene.add(camera)
 
 
-
         let tablaMesh
         let baseMesh
-
 
 
         const gltfLoaderBase = new GLTFLoader()
@@ -103,13 +102,10 @@ const modelFuncional= () =>{
             {
                 tablaMesh= gltf.scene
                 tablaMesh.scale.set(.7,.7, .7)
-                tablaMesh.position.set(0,-1.3, 0)
+                tablaMesh.position.set(0,-1.4, 0)
                 scene.add(tablaMesh)
             }
         )
-
-
-
 
             // Controls
 
@@ -120,8 +116,8 @@ const modelFuncional= () =>{
         controls.minDistance = .5
         controls.maxDistance = 10
 
-        controls.minPolarAngle = 1.7;
-        controls.maxPolarAngle = 1.7;
+        controls.minPolarAngle = 1;
+        controls.maxPolarAngle = 2;
 
             
             /* animate  */
@@ -134,11 +130,12 @@ const modelFuncional= () =>{
 
 
             if (tablaMesh){
-                tablaMesh.rotation.y += 0.009
-                /* tablaMesh.position.y = Math.cos(ghost1Angle * -1) / -4 */
-                pointLight2.rotation.y -=  0.1
-                pointLight.rotation.y -=  0.1
-                pointLight3.rotation.y -=  0.1
+                tablaMesh.rotation.y += 0.02
+                /* tablaMesh.position.y = Math.cos(ghost1Angle) / 6  */
+                pointLight2.rotation.y -=  0.8
+                pointLight.rotation.y -=  0.8
+                pointLight3.rotation.y -=  0.8
+                ambientLight.rotation.y -=  0.8
             } 
 
             controls.update() 

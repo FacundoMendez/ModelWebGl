@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import modelFuncional from './modelFuncional'
 import "./modelStyle.css"
-import Background from "./src/background.jpeg"
+/* import Background from "./src/background2.jpg" */
 
 const Model = () => {
 
@@ -11,7 +11,7 @@ const Model = () => {
 
   return (
     <div className="containerModel">
-      <img src={Background} alt="fondo" />
+      {/* <img src={Background} alt="fondo" /> */}
         <canvas className='modelWebGl'></canvas>
     </div>
   )
