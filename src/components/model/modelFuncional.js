@@ -113,8 +113,8 @@ const modelFuncional= () =>{
         controls.enableDamping = true
        /*  controls.enableZoom = false  */
         controls.enablePan= false
-        controls.minDistance = .5
-        controls.maxDistance = 10
+        controls.minDistance = .9
+        controls.maxDistance = 6
 
         controls.minPolarAngle = 1;
         controls.maxPolarAngle = 2;
