@@ -1,7 +1,8 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import modelBlender from "./src/models/Tabla3D.glb"
+import TablaModel from "./src/models/Tabla.glb"
+import BaseModel from "./src/models/Base.glb"
 
 
 const modelFuncional= () =>{
@@ -53,7 +54,7 @@ const modelFuncional= () =>{
 
             /* lights */
        
-         /*    const ambientLight = new THREE.AmbientLight(0xff00ff, .4)
+            const ambientLight = new THREE.AmbientLight(0xff00ff, .4)
             scene.add(ambientLight)
         
             const pointLight = new THREE.PointLight(0xffffff,7)
@@ -67,7 +68,7 @@ const modelFuncional= () =>{
             const pointLight3 = new THREE.PointLight(0xFFDAAA, 10)
             pointLight3.position.set(0 , 2, 0)
             scene.add(pointLight3)
- */
+
           
 
             /* camera */
@@ -78,19 +79,35 @@ const modelFuncional= () =>{
 
 
 
-        let modelMesh
+        let tablaMesh
+        let baseMesh
 
-        const gltfLoader = new GLTFLoader()
-        gltfLoader.load(modelBlender,
+
+
+        const gltfLoaderBase = new GLTFLoader()
+        gltfLoaderBase.load(BaseModel,
             (gltf) =>
             {
-                modelMesh= gltf.scene
-                modelMesh.scale.set(.7,.7, .7)
-                modelMesh.position.set(0,-1.4,0)
+                baseMesh= gltf.scene
+                baseMesh.scale.set(.7,.7, .7)
+                baseMesh.position.set(0,-1.4, 0)
 
-                scene.add(modelMesh)
+                scene.add(baseMesh)
             }
         )
+
+        
+        const gltfLoader = new GLTFLoader()
+        gltfLoader.load(TablaModel,
+            (gltf) =>
+            {
+                tablaMesh= gltf.scene
+                tablaMesh.scale.set(.7,.7, .7)
+                tablaMesh.position.set(0,-1.3, 0)
+                scene.add(tablaMesh)
+            }
+        )
+
 
 
 
@@ -103,31 +120,26 @@ const modelFuncional= () =>{
         controls.minDistance = .5
         controls.maxDistance = 10
 
-    /*     controls.minPolarAngle = 1.7;
-        controls.maxPolarAngle = 1.7; */
-
+        controls.minPolarAngle = 1.7;
+        controls.maxPolarAngle = 1.7;
 
             
             /* animate  */
 
         
-        /* const clock = new THREE.Clock() */
+        const clock = new THREE.Clock()
         const animate = ()=>{
-            /* const time = clock.getElapsedTime() */
-            /* const ghost1Angle = time  */
+            const time = clock.getElapsedTime()
+            const ghost1Angle = time 
 
 
-
-            if (modelMesh){
-                modelMesh.rotation.y += 0.009
-                /* modelMesh.position.y = Math.cos(ghost1Angle *1.4) / 1.8 */
-         /*        pointLight2.rotation.y -=  0.1
+            if (tablaMesh){
+                tablaMesh.rotation.y += 0.009
+                /* tablaMesh.position.y = Math.cos(ghost1Angle * -1) / -4 */
+                pointLight2.rotation.y -=  0.1
                 pointLight.rotation.y -=  0.1
-                pointLight3.rotation.y -=  0.1 */
+                pointLight3.rotation.y -=  0.1
             } 
-
-          
-            // Update camera
 
             controls.update() 
             renderer.render(scene,camera)
@@ -135,7 +147,6 @@ const modelFuncional= () =>{
 
         }
         animate()
-
 
 
 
