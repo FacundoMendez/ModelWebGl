@@ -57,7 +57,7 @@ const modelFuncional= () =>{
             scene.add(ambientLight)
         
             const pointLight = new THREE.PointLight(0xFFDAAA,5)
-            pointLight.position.set(0 , 0, 0)
+            pointLight.position.set(0 , 0, 2)
             scene.add(pointLight)
 
             const pointLight2 = new THREE.PointLight(0xFFDAAA, 5)
