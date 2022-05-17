@@ -130,7 +130,7 @@ const modelFuncional= () =>{
 
 
             if (tablaMesh){
-                tablaMesh.rotation.y += 0.02
+                tablaMesh.rotation.y += 0.009
                 /* tablaMesh.position.y = Math.cos(ghost1Angle) / 6  */
                 pointLight2.rotation.y -=  0.8
                 pointLight.rotation.y -=  0.8
